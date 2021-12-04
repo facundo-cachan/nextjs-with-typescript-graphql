@@ -10,4 +10,25 @@ module.exports = {
       { subsequentTransformer: 'babel-jest' },
     ],
   },
+  watchPlugins: [
+    'jest-watch-typeahead/filename',
+    'jest-watch-typeahead/testname',
+  ],
+  moduleNameMapper: {
+    '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
+    '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__mocks__/fileMock.js',
+  },
+  collectCoverageFrom: ['./pages/**/*.{ts,tsx}'],
+  coverageThreshold: {
+    global: {
+      branches: 80,
+      functions: 80,
+      lines: 80,
+      statements: -10,
+    },
+    './pages/': {
+      branches: 40,
+      statements: 40,
+    },
+  },
 }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Link from 'next/link'
 import { useState } from 'react'
 import {
@@ -31,17 +32,21 @@ const Index = () => {
         // Add our comment from the mutation to the end.
         newViewer.name = data.updateName.name
         // Write our data back to the cache.
-        cache.writeQuery({ query: ViewerDocument, data: { viewer: newViewer } })
+        cache.writeQuery({
+          query: ViewerDocument,
+          data: { viewer: newViewer },
+        })
       },
     })
   }
 
   return (
     <div>
-      You're signed in as {viewer.name} and you're {viewer.status}. Go to the{' '}
+      You&apos;re signed in as {viewer.name} and you&apos;re {viewer.status}. Go
+      to the{' '}
       <Link href="/about">
-        <a>about</a>
-      </Link>{' '}
+        <a data-testid="toggle">about</a>
+      </Link>
       page.
       <div>
         <input

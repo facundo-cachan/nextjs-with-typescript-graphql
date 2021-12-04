@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-imports */
 import { QueryResolvers, MutationResolvers } from './type-defs.graphqls'
 import { ResolverContext } from './apollo'
 
