@@ -8,6 +8,7 @@ import {
   ViewerDocument,
 } from '../lib/viewer.graphql'
 import { initializeApollo } from '../lib/apollo'
+import { Layout } from '../components'
 
 const Index = () => {
   const { viewer } = useViewerQuery().data!
@@ -41,7 +42,7 @@ const Index = () => {
   }
 
   return (
-    <div>
+    <Layout>
       You&apos;re signed in as {viewer.name} and you&apos;re {viewer.status}. Go
       to the{' '}
       <Link href="/about">
@@ -56,7 +57,7 @@ const Index = () => {
         />
         <input type="button" value="change" onClick={onChangeName} />
       </div>
-    </div>
+    </Layout>
   )
 }
 

@@ -17,7 +17,8 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
-      "jsx": false
+      "jsx": true,
+      "modules": true
     },
     "ecmaVersion": 12,
     "sourceType": "module"

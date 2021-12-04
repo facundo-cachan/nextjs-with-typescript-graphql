@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import type { ReactElement } from 'react'
+import { Layout } from '../components'
 
 export default function About() {
   return (
@@ -10,4 +12,8 @@ export default function About() {
       page.
     </div>
   )
+}
+
+About.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>
 }
