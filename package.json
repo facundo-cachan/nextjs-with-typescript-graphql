@@ -50,6 +50,7 @@
     "@types/react-test-renderer": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
+    "ansi-regex": "^5.0.1",
     "babel-jest": "^27.4.2",
     "eslint": "^8.4.0",
     "eslint-config-prettier": "^8.3.0",
