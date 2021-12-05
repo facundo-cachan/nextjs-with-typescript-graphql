@@ -57,6 +57,7 @@ export function initializeApollo(
 }
 
 export function useApollo(initialState: any) {
+  // eslint-disable-next-line sonarjs/prefer-immediate-return
   const store = useMemo(() => initializeApollo(initialState), [initialState])
   return store
 }

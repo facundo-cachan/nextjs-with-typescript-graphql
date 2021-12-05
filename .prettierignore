@@ -1,5 +1,10 @@
-node_modules
-.next
+**/node_modules/*
+**/coverage/*
+**/.next/*
+**/__generated__/*
+**/*.graphql.d.ts
+**/lib/**/*
+./graphql.d.ts
 yarn.lock
 package-lock.json
 public

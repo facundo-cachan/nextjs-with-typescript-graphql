@@ -1,4 +1,4 @@
-/* eslint-disable no-restricted-imports */
+/* eslint-disable import/no-duplicates */
 import { QueryResolvers, MutationResolvers } from './type-defs.graphqls'
 import { ResolverContext } from './apollo'
 
@@ -9,13 +9,13 @@ const userProfile = {
 }
 
 const Query: Required<QueryResolvers<ResolverContext>> = {
-  viewer(_parent, _args, _context, _info) {
+  viewer(_parent: any, _args: any, _context: any, _info: any) {
     return userProfile
   },
 }
 
 const Mutation: Required<MutationResolvers<ResolverContext>> = {
-  updateName(_parent, _args, _context, _info) {
+  updateName(_parent: any, _args: { name: string }, _context: any, _info: any) {
     userProfile.name = _args.name
     return userProfile
   },

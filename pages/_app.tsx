@@ -20,11 +20,13 @@ library.add(fab, fas, far)
 export function reportWebVitals(metric: NextWebVitalsMetric) {
   if (process.env.NODE_ENV === 'test') {
     require('utils/wdyr')
+    // eslint-disable-next-line no-console
     console.log(metric)
   }
 }
 
 type NextPageWithLayout = NextPage & {
+  // eslint-disable-next-line no-unused-vars
   getLayout?: (page: ReactElement) => ReactNode
 }
 
@@ -38,8 +40,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const router = useRouter()
 
   useEffect(() => {
-    const handleStart = (url) => {
-      console.log(`Loading: ${url}`)
+    const handleStart = () => {
       NProgress.start()
     }
     const handleStop = () => {
