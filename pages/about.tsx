@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { ReactElement } from 'react'
-import { Layout } from '../components'
+import { Layout, Cards } from '../components'
 
 export default function About() {
   return (
@@ -10,6 +10,9 @@ export default function About() {
         <a>Home</a>
       </Link>{' '}
       page.
+      <Cards.Group>
+        <h3>Holis</h3>
+      </Cards.Group>
     </div>
   )
 }

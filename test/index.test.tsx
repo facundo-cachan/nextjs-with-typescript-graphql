@@ -1,17 +1,17 @@
-import React from "react";
-import { InMemoryCache, gql } from "@apollo/client";
-import { create, act, ReactTestRenderer } from "react-test-renderer";
-import { MockedProvider } from "@apollo/client/testing";
+import React from 'react'
+import { InMemoryCache, gql } from '@apollo/client'
+import { create, act, ReactTestRenderer } from 'react-test-renderer'
+import { MockedProvider } from '@apollo/client/testing'
 
-import Index from "../pages";
+import Index from '../pages'
 
-jest.mock("next/link", () => {
+jest.mock('next/link', () => {
   return ({ children }) => {
-    return children;
-  };
-});
+    return children
+  }
+})
 
-const cache = new InMemoryCache();
+const cache = new InMemoryCache()
 cache.writeQuery({
   query: gql`
     query Viewer {
@@ -24,23 +24,23 @@ cache.writeQuery({
   `,
   data: {
     viewer: {
-      __typename: "User",
-      id: "Baa",
-      name: "Baa",
-      status: "Healthy",
+      __typename: 'User',
+      id: 'Baa',
+      name: 'Baa',
+      status: 'Healthy',
     },
   },
-});
-let root: ReactTestRenderer;
-describe("Index", () => {
-  it("renders the html we want", async () => {
+})
+let root: ReactTestRenderer
+describe('Index', () => {
+  it('renders the html we want', async () => {
     act(() => {
       root = create(
         <MockedProvider cache={cache}>
           <Index />
         </MockedProvider>
-      );
-    });
-    expect(root.toJSON()).toMatchSnapshot();
-  });
-});
+      )
+    })
+    expect(root.toJSON()).toMatchSnapshot()
+  })
+})
