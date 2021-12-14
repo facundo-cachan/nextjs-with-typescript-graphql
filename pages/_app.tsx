@@ -41,11 +41,15 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const router = useRouter()
 
   useEffect(() => {
-    ;(async () => {
+    async function SetIcons() {
       const icons = await fetch('/json/icons.json')
       const json = await icons.json()
       setIcons(json)
-    })()
+    }
+    SetIcons()
+  }, [])
+
+  useEffect(() => {
     const handleStart = () => {
       NProgress.start()
     }
