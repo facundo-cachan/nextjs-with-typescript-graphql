@@ -10,6 +10,6 @@ type Props = {
   children?: ReactNode
 }
 const Footer = ({ children }: Props): JSX.Element => {
-  return <footer>{children || <h1>Footer</h1>}</footer>
+  return <footer data-testid="footer">{children || <h1>Footer</h1>}</footer>
 }
 export default Footer

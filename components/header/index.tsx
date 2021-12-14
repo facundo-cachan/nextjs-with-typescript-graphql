@@ -10,6 +10,6 @@ type Props = {
   children?: ReactNode
 }
 const Header = ({ children }: Props): JSX.Element => {
-  return <header>{children || <h1>Header</h1>}</header>
+  return <header data-testid="header">{children || <h1>Header</h1>}</header>
 }
 export default Header

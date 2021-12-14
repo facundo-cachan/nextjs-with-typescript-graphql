@@ -17,14 +17,6 @@ import '../styles/globals.css'
 
 library.add(fab, fas, far)
 
-export function reportWebVitals(metric: NextWebVitalsMetric) {
-  if (process.env.NODE_ENV === 'test') {
-    require('utils/wdyr')
-    // eslint-disable-next-line no-console
-    console.log(metric)
-  }
-}
-
 type NextPageWithLayout = NextPage & {
   // eslint-disable-next-line no-unused-vars
   getLayout?: (page: ReactElement) => ReactNode
@@ -34,7 +26,7 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 
-export default function App({ Component, pageProps }: AppPropsWithLayout) {
+function App({ Component, pageProps }: AppPropsWithLayout) {
   const apolloClient = useApollo(pageProps.initialApolloState)
   const getLayout = Component.getLayout ?? ((page) => page)
   const [icons, setIcons] = useState<[]>([])
@@ -143,3 +135,13 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
     </>
   )
 }
+
+export function reportWebVitals(metric: NextWebVitalsMetric) {
+  if (process.env.NODE_ENV === 'test') {
+    require('utils/wdyr')
+    // eslint-disable-next-line no-console
+    console.log(metric)
+  }
+}
+
+export default App
