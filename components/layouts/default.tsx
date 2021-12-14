@@ -3,25 +3,29 @@
  * @param {ReactNode} Childs component.
  * @return {JSX.Element} Wrapper Component.
  */
+
 import { useEffect, useState, ReactNode } from 'react'
+import Header from 'components/header'
+import Footer from 'components/footer'
 import { Loaders } from '../'
 
 type LayoutProps = {
   children: ReactNode
+  loading?: boolean
 }
-const Layout = ({ children }: LayoutProps): JSX.Element => {
+const Layout = ({ children, loading }: LayoutProps): JSX.Element => {
   const [isMounted, setIsMounted] = useState<boolean>(false)
   useEffect(() => {
     setIsMounted(true)
   }, [])
-  return isMounted ? (
-    <div id="layout" className="bg-white dark:bg-gray-800">
-      <h1 className="text-gray-900 dark:text-white">Dark mode is here!</h1>
-      <p className="text-gray-600 dark:text-gray-300">Lorem ipsum...</p>
-      {children}
-    </div>
-  ) : (
+  return loading && !isMounted ? (
     <Loaders.Default />
+  ) : (
+    <div id="layout">
+      <Header />
+      {children}
+      <Footer />
+    </div>
   )
 }
 export default Layout

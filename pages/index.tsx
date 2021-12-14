@@ -20,8 +20,6 @@ const Index = () => {
       variables: {
         name: newName,
       },
-      //Follow apollo suggestion to update cache
-      //https://www.apollographql.com/docs/angular/features/cache-updates/#update
       update: (cache, mutationResult) => {
         const { data } = mutationResult
         if (!data) return // Cancel updating name in cache if no data is returned from mutation.
@@ -42,7 +40,7 @@ const Index = () => {
   }
 
   return (
-    <Layout>
+    <Layout loading={false}>
       You&apos;re signed in as {viewer.name} and you&apos;re {viewer.status}. Go
       to the{' '}
       <Link href="/about">

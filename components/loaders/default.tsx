@@ -5,7 +5,7 @@
 
 const Loader = (): JSX.Element => (
   <div className="lds-heart">
-    <div>asdadasd</div>
+    <div>Loading ...</div>
   </div>
 )
 export default Loader

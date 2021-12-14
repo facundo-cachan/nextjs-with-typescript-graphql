@@ -1,4 +1,4 @@
-import { useEffect, ReactElement, ReactNode } from 'react'
+import { useEffect, ReactElement, ReactNode, useState } from 'react'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
@@ -37,20 +37,24 @@ type AppPropsWithLayout = AppProps & {
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const apolloClient = useApollo(pageProps.initialApolloState)
   const getLayout = Component.getLayout ?? ((page) => page)
+  const [icons, setIcons] = useState<[]>([])
   const router = useRouter()
 
   useEffect(() => {
+    ;(async () => {
+      const icons = await fetch('/json/icons.json')
+      const json = await icons.json()
+      setIcons(json)
+    })()
     const handleStart = () => {
       NProgress.start()
     }
     const handleStop = () => {
       NProgress.done()
     }
-
     router.events.on('routeChangeStart', handleStart)
     router.events.on('routeChangeComplete', handleStop)
     router.events.on('routeChangeError', handleStop)
-
     return () => {
       router.events.off('routeChangeStart', handleStart)
       router.events.off('routeChangeComplete', handleStop)
@@ -89,21 +93,9 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
         <link rel="apple-touch-icon" href="/img/icons/logo.svg" />
-        <link
-          rel="apple-touch-icon"
-          sizes="152x152"
-          href="/img/icons/logo.svg"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/img/icons/logo.svg"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="167x167"
-          href="/img/icons/logo.svg"
-        />
+        {icons.map(({ src, sizes }, index: number) => (
+          <link key={index} rel="apple-touch-icon" sizes={sizes} href={src} />
+        ))}
         <link
           rel="icon"
           type="image/svg"
@@ -116,7 +108,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
           sizes="16x16"
           href="/img/icons/logo.svg"
         />
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="manifest" href="/manifest.webmanifest" />
         <link rel="mask-icon" href="/img/icons/logo.svg" color="transparent" />
         <link rel="shortcut icon" href="/img/icons/logo.svg" />
         <meta name="twitter:card" content="summary" />
@@ -125,7 +117,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <meta name="twitter:description" content="Best PWA App in the world" />
         <meta
           name="twitter:image"
-          content="https://facundo-cachan.com/icons/android-chrome-192x192.png"
+          content="https://facundo-cachan.com/img/icons/android-chrome-192x192.png"
         />
         <meta name="twitter:creator" content="@DavidWShadow" />
         <meta property="og:type" content="website" />

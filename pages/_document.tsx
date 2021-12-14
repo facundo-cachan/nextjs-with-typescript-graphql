@@ -35,7 +35,6 @@ const structuredData = {
     email: 'info@ungga.com',
   },
 }
-
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     return await Document.getInitialProps(ctx)

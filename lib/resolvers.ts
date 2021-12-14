@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/no-duplicates */
 import { QueryResolvers, MutationResolvers } from './type-defs.graphqls'
 import { ResolverContext } from './apollo'
