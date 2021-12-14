@@ -33,13 +33,14 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
   const router = useRouter()
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-extra-semi
-    ;(async () => {
+    async function SetIcons() {
       const icons = await fetch('/json/icons.json')
       const json = await icons.json()
       setIcons(json)
-    })()
+    }
+    SetIcons()
   }, [])
+
   useEffect(() => {
     const handleStart = () => {
       NProgress.start()
