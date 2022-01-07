@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/no-duplicates */
-import { QueryResolvers, MutationResolvers } from './type-defs.graphqls'
-import { ResolverContext } from './apollo'
+// @ts-nocheck
+import { QueryResolvers, MutationResolvers } from './user.graphqls'
+import { ResolverContext } from '../lib/apollo'
 
 const userProfile = {
   id: String(1),

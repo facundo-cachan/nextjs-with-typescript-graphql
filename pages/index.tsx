@@ -6,7 +6,7 @@ import {
   useViewerQuery,
   useUpdateNameMutation,
   ViewerDocument,
-} from '../lib/viewer.graphql'
+} from '../graphql/queries/viewer.graphql'
 import { initializeApollo } from '../lib/apollo'
 import { Layout } from '../components'
 

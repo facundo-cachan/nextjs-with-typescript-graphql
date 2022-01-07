@@ -6,11 +6,18 @@ module.exports = {
   ],
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$'],
   transform: {
+    '^.+\\.(t|j)sx?$': '@swc/jest',
+    '\\.graphql$': [
+      'graphql-let/jestTransformer',
+      { subsequentTransformer: '@swc/jest' },
+    ],
+    /*
     '^.+\\.(ts|tsx)$': 'babel-jest',
     '\\.graphql$': [
       'graphql-let/jestTransformer',
       { subsequentTransformer: 'babel-jest' },
     ],
+    */
   },
   watchPlugins: [
     'jest-watch-typeahead/filename',
