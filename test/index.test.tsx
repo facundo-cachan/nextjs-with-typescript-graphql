@@ -31,14 +31,12 @@ cache.writeQuery({
     },
   },
 })
-
 let root: ReactTestRenderer
-
 describe('Index', () => {
   it('renders the html we want', async () => {
     act(() => {
       root = create(
-        <MockedProvider>
+        <MockedProvider cache={cache}>
           <Index />
         </MockedProvider>
       )

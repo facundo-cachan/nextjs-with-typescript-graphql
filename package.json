@@ -8,7 +8,7 @@
     }
   },
   "scripts": {
-    "clean": "rm -rf .next;rm .env.local;rm public/*.js",
+    "clean": "rm -rf .next;rm ./graphql/queries/*.graphql.d.ts;rm .env.local;rm public/*.js",
     "codegen": "graphql-let",
     "dev": "yarn codegen && NODE_ENV=test next",
     "build": "yarn codegen && next build",

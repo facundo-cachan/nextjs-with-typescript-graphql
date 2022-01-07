@@ -6,7 +6,7 @@ module.exports = {
   ],
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$'],
   transform: {
-    '^.+\\.(t|j)sx?$': '@swc/jest',
+    '^.+\\.(t|j)sx?$': ['@swc/jest'],
     '\\.graphql$': [
       'graphql-let/jestTransformer',
       { subsequentTransformer: '@swc/jest' },
