@@ -21,10 +21,14 @@ const Layout = ({ children, loading }: LayoutProps): JSX.Element => {
   return loading && !isMounted ? (
     <Loaders.Default />
   ) : (
-    <div id="layout">
-      <Header />
-      {children}
-      <Footer />
+    <div className="container is-fluid">
+      <div className="notification is-primary">
+        This container is <strong>fluid</strong>: it will have a 32px gap on
+        either side, on any viewport size.
+        <Header />
+        {children}
+        <Footer />
+      </div>
     </div>
   )
 }

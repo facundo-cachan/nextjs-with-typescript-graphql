@@ -1,21 +1,12 @@
 import { useEffect, ReactElement, ReactNode, useState } from 'react'
 import { NextPage } from 'next'
-import { useRouter } from 'next/router'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
 import Head from 'next/head'
 
 import { ApolloProvider } from '@apollo/client'
 import { useApollo } from '../lib/apollo'
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
-
-import NProgress from 'nprogress'
-import '../styles/globals.css'
-
-library.add(fab, fas, far)
+import 'styles/main.sass'
 
 type NextPageWithLayout = NextPage & {
   // eslint-disable-next-line no-unused-vars
@@ -30,7 +21,6 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
   const apolloClient = useApollo(pageProps.initialApolloState)
   const getLayout = Component.getLayout ?? ((page) => page)
   const [icons, setIcons] = useState<[]>([])
-  const router = useRouter()
 
   useEffect(() => {
     async function SetIcons() {
@@ -41,22 +31,6 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
     SetIcons()
   }, [])
 
-  useEffect(() => {
-    const handleStart = () => {
-      NProgress.start()
-    }
-    const handleStop = () => {
-      NProgress.done()
-    }
-    router.events.on('routeChangeStart', handleStart)
-    router.events.on('routeChangeComplete', handleStop)
-    router.events.on('routeChangeError', handleStop)
-    return () => {
-      router.events.off('routeChangeStart', handleStart)
-      router.events.off('routeChangeComplete', handleStop)
-      router.events.off('routeChangeError', handleStop)
-    }
-  }, [router])
   return (
     <>
       <Head>
@@ -79,6 +53,10 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
           rel="stylesheet"
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
+        {/* <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+        /> */}
         <meta name="description" content="Facundo Cachan" />
         <link rel="icon" href="/img/icons/logo.svg" />
         <meta name="application-name" content="Facundo Cachan - PWA App" />
