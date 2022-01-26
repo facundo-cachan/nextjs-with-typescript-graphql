@@ -1,2 +1,2 @@
-import Group from './group'
-export { Group }
+import Simple from './simple'
+export { Simple }

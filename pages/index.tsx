@@ -8,7 +8,7 @@ import {
   ViewerDocument,
 } from '../graphql/queries/viewer.graphql'
 import { initializeApollo } from '../lib/apollo'
-import { Layout } from '../components'
+import { Buttons, Layout } from '../components'
 
 const Index = () => {
   const { viewer } = useViewerQuery().data!
@@ -39,6 +39,8 @@ const Index = () => {
     })
   }
 
+  const log = () => console.log('Click btn')
+
   return (
     <Layout loading={false}>
       You&apos;re signed in as {viewer.name} and you&apos;re {viewer.status}. Go
@@ -52,6 +54,12 @@ const Index = () => {
           type="text"
           placeholder="your new name..."
           onChange={(e) => setNewName(e.target.value)}
+        />
+        <Buttons.Simple
+          text="Test Button"
+          action={log}
+          loading
+          color="danger"
         />
         <input type="button" value="change" onClick={onChangeName} />
       </div>
