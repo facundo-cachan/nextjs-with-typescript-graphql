@@ -1,11 +1,13 @@
-import {ReactChild} from "react"
+import { ReactChild } from 'react'
 import Linked from './linked'
 import Simple from './simple'
 import type { Icon } from '../icon'
 export { Linked, Simple }
 
-export enum BtnType {
-  "button"| "submit"| "reset"
+enum Btn {
+  button = 'button',
+  submit = 'submit',
+  reset = 'reset',
 }
 
 export type Props = {
@@ -25,5 +27,5 @@ export type Props = {
   tabIndex?: number
   text?: string
   title?: string
-  type?: BtnType
+  type?: Btn
 }

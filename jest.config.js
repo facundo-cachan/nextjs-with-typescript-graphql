@@ -4,6 +4,7 @@ module.exports = {
   testPathIgnorePatterns: [
     '<rootDir>[/\\\\](node_modules|.next|coverage)[/\\\\]',
   ],
+  extensionsToTreatAsEsm: ['.ts', '.tsx'],
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$'],
   transform: {
     '^.+\\.(t|j)sx?$': ['@swc/jest'],

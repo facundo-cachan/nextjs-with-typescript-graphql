@@ -10,7 +10,7 @@
   "scripts": {
     "clean": "rm -rf .next;rm ./graphql/queries/*.graphql.d.ts;rm .env.local;rm public/*.js",
     "codegen": "graphql-let",
-    "dev": "yarn codegen && NODE_ENV=test next",
+    "dev": "yarn codegen && NODE_ENV=test next dev -p 3001",
     "build": "yarn codegen && next build",
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
@@ -48,7 +48,7 @@
     "@graphql-codegen/typescript-resolvers": "^2.4.2",
     "@next/bundle-analyzer": "12.0.6",
     "@swc/core": "^1.2.127",
-    "@swc/jest": "^0.2.15",
+    "@swc/jest": "^0.2.17",
     "@testing-library/react": "12.1.2",
     "@types/jest": "27.0.3",
     "@types/node": "16.11.11",
