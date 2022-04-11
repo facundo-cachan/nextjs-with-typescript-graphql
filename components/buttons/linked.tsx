@@ -14,7 +14,6 @@
  * @returns {JSX.Element} Button with optionals styles and icons.
  */
 
-import { ReactNode } from 'react'
 import Link from 'next/link'
 
 import type { Props } from '.'

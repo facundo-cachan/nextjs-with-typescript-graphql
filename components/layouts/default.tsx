@@ -16,9 +16,10 @@ type LayoutProps = {
 const Layout = ({ children, loading }: LayoutProps): JSX.Element => {
   const [isMounted, setIsMounted] = useState<boolean>(false)
   useEffect(() => {
+    console.log({ loading })
     setIsMounted(true)
   }, [])
-  return loading && !isMounted ? (
+  return !loading && !isMounted ? (
     <Loaders.Default />
   ) : (
     <div className="container is-fluid">

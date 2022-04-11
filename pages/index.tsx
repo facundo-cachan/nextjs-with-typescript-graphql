@@ -10,7 +10,7 @@ import {
 import { initializeApollo } from '../lib/apollo'
 import { Buttons, Layout } from '../components'
 
-const Index = () => {
+const Index = ({ loading }: { loading: boolean }) => {
   const { viewer } = useViewerQuery().data!
   const [newName, setNewName] = useState('')
   const [updateNameMutation] = useUpdateNameMutation()
@@ -39,11 +39,9 @@ const Index = () => {
     })
   }
 
-  const log = () => console.log('Click btn')
-
   return (
-    <Layout loading={false}>
-      You&apos;re signed in as {viewer.name} and you&apos;re {viewer.status}. Go
+    <Layout loading={loading}>
+      You&apos;re signed in as {viewer?.name} and you&apos;re {viewer?.status}. Go
       to the{' '}
       <Link href="/about">
         <a data-testid="toggle">about</a>
@@ -57,7 +55,6 @@ const Index = () => {
         />
         <Buttons.Simple
           text="Test Button"
-          action={log}
           loading
           color="danger"
         />

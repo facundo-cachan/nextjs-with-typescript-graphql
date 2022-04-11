@@ -32,6 +32,7 @@ const Simple = ({
   return (
     <button
       id={Id}
+      arial-label={ariaLabel || name}
       datatest-id={id || Id}
       accessKey={accessKey}
       onClick={action}

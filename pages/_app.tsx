@@ -108,7 +108,7 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
         />
       </Head>
       <ApolloProvider client={apolloClient}>
-        {getLayout(<Component {...pageProps} />)}
+        {getLayout(<Component {...pageProps} loading={true} />)}
       </ApolloProvider>
     </>
   )
