@@ -28,7 +28,7 @@ const Simple = ({
   const isColor = color ? `is-${color}` : 'is-primary'
   const isLoading = loading && 'is-loading'
   const classes = className ? className : ''
-  console.log({classes})
+
   return (
     <button
       id={Id}

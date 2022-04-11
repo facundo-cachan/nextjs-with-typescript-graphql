@@ -1,44 +1,19 @@
-module.exports = {
-  roots: ['<rootDir>'],
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'json', 'jsx'],
-  testPathIgnorePatterns: [
-    '<rootDir>[/\\\\](node_modules|.next|coverage)[/\\\\]',
-  ],
-  extensionsToTreatAsEsm: ['.ts', '.tsx'],
-  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$'],
-  transform: {
-    '^.+\\.(t|j)sx?$': ['@swc/jest'],
-    '\\.graphql$': [
-      'graphql-let/jestTransformer',
-      { subsequentTransformer: '@swc/jest' },
-    ],
-    /*
-    '^.+\\.(ts|tsx)$': 'babel-jest',
-    '\\.graphql$': [
-      'graphql-let/jestTransformer',
-      { subsequentTransformer: 'babel-jest' },
-    ],
-    */
-  },
-  watchPlugins: [
-    'jest-watch-typeahead/filename',
-    'jest-watch-typeahead/testname',
-  ],
+const nextJest = require('next/jest')
+
+const createJestConfig = nextJest({
+  // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+  dir: './',
+})
+
+// Add any custom config to be passed to Jest
+const customJestConfig = {
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
-    '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
-    '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__mocks__/fileMock.js',
+    '^components/(.*)$': '<rootDir>/components/$1',
+    '^pages/(.*)$': '<rootDir>/pages/$1',
+    '^mocks/(.*)$': '<rootDir>/mocks/$1',
   },
-  collectCoverageFrom: ['./pages/**/*.{ts,tsx}'],
-  coverageThreshold: {
-    global: {
-      branches: 80,
-      functions: 80,
-      lines: 80,
-      statements: -10,
-    },
-    './pages/': {
-      branches: 40,
-      statements: 40,
-    },
-  },
+  testEnvironment: 'jest-environment-jsdom',
 }
+
+module.exports = createJestConfig(customJestConfig)

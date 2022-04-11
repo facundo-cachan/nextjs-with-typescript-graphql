@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import type { ReactElement } from 'react'
-import { Layout, Buttons } from 'components'
+import { Layout, Buttons } from 'components/'
+
 export default function About() {
-   const log = () => console.log('Click btn')
   return (
     <div>
       Welcome to the about page. Go to the{' '}
@@ -16,14 +16,6 @@ export default function About() {
         color="warning"
         startIcon={{ icon: 'heart' }}
         endIcon={{ icon: 'home' }}
-      />
-      <hr />
-      <Buttons.Simple
-        text="Simple Button"
-        color="warning"
-        startIcon={{ icon: 'heart' }}
-        endIcon={{ icon: 'home' }}
-        action={log}
       />
     </div>
   )
