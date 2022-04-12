@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "types": ["node", "jest", "@testing-library/jest-dom"],
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -15,12 +16,20 @@
     "jsx": "preserve",
     "incremental": true,
     "rootDir": ".",
-    "baseUrl": "."
+    "baseUrl": ".",
   },
-  "include": ["next-env.d.ts", "graphql.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "graphql.d.ts",
+    "./graphql/**/*.(ts|graphql)$",
+    "./lib/**/*.(ts|graphqls)$",
+    "./pages/**/*.(ts|tsx)$",
+    "./mocks/**/*.(ts|json)$",
+    "./pages/**/*.(ts|tsx)$",
+  ],
   "exclude": [
     "node_modules",
-    "./test",
+    "__tests__/**/*",
     "./__generated__",
     "./lib/resolvers.ts",
     "./lib/**/*.graphqls"

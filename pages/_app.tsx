@@ -9,7 +9,6 @@ import { useApollo } from '../lib/apollo'
 import 'styles/main.sass'
 
 type NextPageWithLayout = NextPage & {
-  // eslint-disable-next-line no-unused-vars
   getLayout?: (page: ReactElement) => ReactNode
 }
 
@@ -108,7 +107,7 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
         />
       </Head>
       <ApolloProvider client={apolloClient}>
-        {getLayout(<Component {...pageProps} />)}
+        {getLayout(<Component {...pageProps} loading={true} />)}
       </ApolloProvider>
     </>
   )
@@ -117,7 +116,6 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
 export function reportWebVitals(metric: NextWebVitalsMetric) {
   if (process.env.NODE_ENV === 'test') {
     require('utils/wdyr')
-    // eslint-disable-next-line no-console
     console.log(metric)
   }
 }

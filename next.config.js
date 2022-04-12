@@ -8,11 +8,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const config = {
   reactStrictMode: true,
   compress: true,
-  env: {
-    GOOGLE_CLIENT_ID: '',
-    GOOGLE_CLIENT_SECRET: '',
-    FACEBOOK_CLIENT_ID: '',
-    FACEBOOK_CLIENT_SECRET: '',
+  compiler: {
+    // ssr and displayName are configured by default
+    styledComponents: true,
   },
   eslint: {
     dirs: ['pages', 'component', 'utils'],
