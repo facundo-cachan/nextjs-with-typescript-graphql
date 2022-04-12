@@ -19,8 +19,8 @@ const structuredData = {
   validThrough: '2020/01/07',
   jobLocation: {
     '@type': 'Place',
-    name: 'Ungga Inmobiliaria',
-    email: 'info@ungga.com',
+    name: 'Globy Solutions',
+    email: 'info@globy.solutions',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Chacabuco 1565',
@@ -31,8 +31,8 @@ const structuredData = {
   },
   hiringOrganization: {
     '@type': 'Organization',
-    name: 'Ungga Inmobiliaria',
-    email: 'info@ungga.com',
+    name: 'Globy Solutions',
+    email: 'info@globy.solutions',
   },
 }
 export default class MyDocument extends Document {

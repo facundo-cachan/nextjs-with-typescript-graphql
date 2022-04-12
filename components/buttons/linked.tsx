@@ -32,11 +32,12 @@ const Linked = ({
   href,
   id,
   loading,
+  name,
   newTab,
   startIcon,
   text,
 }: BtnLinkedProps): JSX.Element => {
-  const Id = id || `button-${Math.random()}`
+  const Id = id || `button-${id || name}`
   const isColor = color ? `is-${color}` : 'is-primary'
   const isLoading = loading && 'is-loading'
   const classes = className ? className : ''

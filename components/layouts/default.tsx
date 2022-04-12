@@ -16,20 +16,15 @@ type LayoutProps = {
 const Layout = ({ children, loading }: LayoutProps): JSX.Element => {
   const [isMounted, setIsMounted] = useState<boolean>(false)
   useEffect(() => {
-    console.log({ loading })
     setIsMounted(true)
   }, [])
   return !loading && !isMounted ? (
     <Loaders.Default />
   ) : (
     <div className="container is-fluid">
-      <div className="notification is-primary">
-        This container is <strong>fluid</strong>: it will have a 32px gap on
-        either side, on any viewport size.
-        <Header />
-        {children}
-        <Footer />
-      </div>
+      <Header />
+      {children}
+      <Footer />
     </div>
   )
 }

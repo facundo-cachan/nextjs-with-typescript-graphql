@@ -2,9 +2,9 @@ import Link from 'next/link'
 import type { ReactElement } from 'react'
 import { Layout, Buttons } from 'components/'
 
-export default function About() {
+export default function About({ loading }: { loading: boolean }) {
   return (
-    <div>
+    <Layout loading={Boolean(loading)}>
       Welcome to the about page. Go to the{' '}
       <Link href="/">
         <a>Home</a>
@@ -17,7 +17,7 @@ export default function About() {
         startIcon={{ icon: 'heart' }}
         endIcon={{ icon: 'home' }}
       />
-    </div>
+    </Layout>
   )
 }
 
